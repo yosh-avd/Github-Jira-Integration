@@ -49,7 +49,7 @@ def createjira():
 
     webhook = request.get_json()
 
-        required_output = webhook['comment']['body']
+    required_output = webhook['comment']['body']
 
         if (required_output  == '/jira'):
             response = requests.request(
