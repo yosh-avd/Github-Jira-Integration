@@ -51,7 +51,7 @@ def createjira():
 
     required_output = webhook['comment']['body']
 
-        if (required_output  == '/jira'):
+    if (required_output  == '/jira'):
             response = requests.request(
             "POST",
             url,
@@ -62,7 +62,7 @@ def createjira():
 
             return json.dumps(json.loads(response.text), sort_keys=True, indent=4, separators=(",", ": "))
 
-        else:
-             print("Jira issue will be created if comment include /jira")
+    else:
+            print("Jira issue will be created if comment include /jira")
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
