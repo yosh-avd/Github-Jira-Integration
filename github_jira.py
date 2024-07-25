@@ -42,7 +42,7 @@ def createjira():
         "issuetype": {
             "id": "10007"
         },
-        "summary": "Main order flow broken",
+        "summary": "jira_Main order flow broken",
     },
     "update": {}
     } )
