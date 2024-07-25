@@ -9,7 +9,7 @@ app = Flask(__name__)
 @app.route('/createjira', methods=['POST'])
 def createjira():
 
-    url = "https://yoshobanta-153.atlassian.net/rest/api/3/issue"
+    url = "https://yoshobanta-153.atlassian.net/jira/rest/api/3/issue"
     
     API_TOKEN= "ATATT3xFfGF0Hj-pHsmB39jxammRd4VoFkC8w63VzjQDkhSF_QRBKcjQ95Zi2BDchmxBYd4BoJfxBZ6jdK2Mo0geBWYD9M8Y697KNMIqKtGZ0NvBGTENWEvdgtoM8GeSHKpEd9AOlWrGosr6UlEeRDxz79BB57En_P-PQl_mV01JNnsd4Ybt5-g=E7CBAE80"
     auth = HTTPBasicAuth("garnaikyosh@gmail.com", API_TOKEN)
