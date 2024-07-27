@@ -47,22 +47,15 @@ def createjira():
     "update": {}
     } )
 
-    webhook = request.get_json()
+    response = requests.request(
+        "POST",
+        url,
+        data=payload,
+        headers=headers,
+        auth=auth
+    )
 
-    required_output = webhook['comment']['body']
+    return json.dumps(json.loads(response.text), sort_keys=True, indent=4, separators=(",", ": "))
 
-    if (required_output  == '/jira'):
-            response = requests.request(
-            "POST",
-            url,
-            data=payload,
-            headers=headers,
-            auth=auth
-            )
-
-            return json.dumps(json.loads(response.text), sort_keys=True, indent=4, separators=(",", ": "))
-
-    else:
-            print("Jira issue will be created if comment include /jira")
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
