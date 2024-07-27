@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,request
 import requests
 from requests.auth import HTTPBasicAuth
 import json
@@ -47,15 +47,22 @@ def createjira():
     "update": {}
     } )
 
-    response = requests.request(
-        "POST",
-        url,
-        data=payload,
-        headers=headers,
-        auth=auth
-    )
+    webhook = request.get_json()
 
-    return json.dumps(json.loads(response.text), sort_keys=True, indent=4, separators=(",", ": "))
+    required_output = webhook['comment']['body']
 
+    if (required_output  == '/jira'):
+            response = requests.request(
+            "POST",
+            url,
+            data=payload,
+            headers=headers,
+            auth=auth
+            )
+
+            return json.dumps(json.loads(response.text), sort_keys=True, indent=4, separators=(",", ": "))
+
+    else:
+            print("Jira issue will be created if comment include /jira")
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
