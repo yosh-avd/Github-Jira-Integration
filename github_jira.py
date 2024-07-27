@@ -1,4 +1,4 @@
-from flask import Flask,request
+from flask import Flask
 import requests
 from requests.auth import HTTPBasicAuth
 import json
